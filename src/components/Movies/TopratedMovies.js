@@ -1,15 +1,29 @@
-import { useContext } from "react";
-import { MovieContext } from "../../MovieContext/movieContext";
+import { useContext, useEffect } from 'react';
+import MovieContext from '../../context/movie/movieContext';
 
 const TopratedMovies = () => {
-  const { value, value2 } = useContext(MovieContext);
-  const [trendingMoviesValue, setTrendingMoviesValue] = value2;
-  console.log(trendingMoviesValue.results);
-  return <div></div>;
+  const movieContext = useContext(MovieContext);
+  const { popularMovies, getPopularMovies } = movieContext;
+
+  useEffect(() => {
+    if (popularMovies === null) {
+      getPopularMovies();
+    }
+  }, []);
+
+  if (popularMovies && popularMovies.length) {
+    console.log(popularMovies);
+  }
+  
+  return (
+    <div>
+      <h1>Trending Movies</h1>
+    </div>
+  );
 };
 
 export default TopratedMovies;
 
-/* {trendingMovies.results.map((movie) => {
+/* {popularMovies.results.map((movie) => {
         return <h1>{movie.title}</h1>;
       })}*/
