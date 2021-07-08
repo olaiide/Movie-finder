@@ -1,52 +1,39 @@
-import React, { Fragment } from "react";
+import React, { useContext, useEffect } from "react";
+import MovieContext from "../../context/movie/movieContext";
+import PopularMoviesItem from "./PopularMoviesItem";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 0.8fr);
-  row-gap: 100px;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-bottom: 40rem;
+  margin: 2rem 0 0 1.5rem;
 `;
-const Container = styled.div`
-  width: 280px;
-  border-radius: 8px;
-  // background: rgb(32, 35, 36);
-  .movie-poster {
-    width: 100%;
-  }
-  .movie-info {
-    background: rgb(32, 35, 36);
-    padding: 1.4rem;
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    top: -6px;
-  }
+const Header = styled.h1`
+  margin: 3.5rem 0 0 1.5rem;
 `;
+const PopularMovies = () => {
+  const movieContext = useContext(MovieContext);
 
-const IMG_API = "https://image.tmdb.org/t/p/w342";
+  const { popularMovies, getPopularMovies, loading } = movieContext;
 
-const PopularMovies = (props) => {
+  useEffect(() => {
+    getPopularMovies();
+  }, []);
   return (
-    <Fragment>
-      <h2>Popular Movies</h2>
+    <div>
+      <Header>Popular Movies</Header>
       <Wrapper>
-        {props.movies.slice(0, 8).map((movie) => {
-          return (
-            <Container>
-              <h3>{movie.title}</h3>
-              <img className="movie-poster" src={IMG_API + movie.poster_path} />
-              <div className="movie-info">
-                <span>{movie.release_date}</span>
-                <span>{movie.vote_average}</span>
-              </div>
-            </Container>
-          );
-        })}
+        {loading
+          ? "loading"
+          : popularMovies &&
+            popularMovies
+              .slice(0, 8)
+              .map((movie) => (
+                <PopularMoviesItem movie={movie} key={movie.id} />
+              ))}
       </Wrapper>
-    </Fragment>
+    </div>
   );
 };
+
 export default PopularMovies;

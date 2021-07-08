@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Fragment } from "react";
+/*import React, { useState, useContext, useEffect, Fragment } from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import MovieContext from "../../context/movie/movieContext";
@@ -24,7 +24,7 @@ const Input = styled.input`
   border-radius: 3px;
   line-height: 1.21428571em;
   position: relative;
-  right: px;
+  right: -80px;
 
   &::placeholder {
     color: rgba(39, 32, 101, 0.5);
@@ -41,12 +41,12 @@ const CustomForm = () => {
   const { searchMovies, getSearchMovies } = movieContext;
   const [query, setQuery] = useState("");
 
+  const IMG_API = "https://image.tmdb.org/t/p/w342";
   const onChangeHandler = (e) => {
     setQuery(e.target.value);
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setQuery("");
     getSearchMovies(query);
   };
   return (
@@ -62,9 +62,34 @@ const CustomForm = () => {
         <div>
           <Button className="button">Search</Button>
         </div>
+        <Wrapper>
+          {searchMovies &&
+            searchMovies.map((movie) => {
+              return (
+                <div className="container">
+                  <h3 className="title">{movie.title}</h3>
+                  <img
+                    className="movie-poster"
+                    src={IMG_API + movie.poster_path}
+                  />
+                  <div className="movie-info">
+                    <span>{movie.release_date}</span>
+                    <span>{movie.vote_average}</span>
+                  </div>
+                </div>
+              );
+            })}
+        </Wrapper>
       </Form>
     </div>
   );
 };
 
-export default CustomForm;
+export default CustomForm;*/
+
+// <Button className="button" >Search</Button>
+/* {searchMovies &&
+        searchMovies.length > 0 &&
+        searchMovies.map((movie) => (
+          <SearchMoviesItem movie={movie} key={movie.id} />
+        ))}*/

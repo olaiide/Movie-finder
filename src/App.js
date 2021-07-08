@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState }from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Movies from "./components/Movies/Movies";
-import { MovieProvider } from "./MovieContext/movieContext";
-import TopratedMovies from "./components/Movies/TopratedMovies";
+import MovieState from "./context/movie/movieState";
+
+//import { Route, Switch } from "react-router-dom";
 
 function App() {
+
   return (
-    <MovieProvider>
+    <MovieState>
       <div className="App">
         <Header />
         <Movies />
-        <TopratedMovies />
       </div>
-    </MovieProvider>
+    </MovieState>
   );
 }
 
