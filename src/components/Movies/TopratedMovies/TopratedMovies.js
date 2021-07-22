@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import MovieContext from "../../context/movie/movieContext";
+import MovieContext from "../../../context/movie/movieContext";
 import TopratedMoviesItem from "./TopRatedMoviesItem";
 import styled from "styled-components";
 

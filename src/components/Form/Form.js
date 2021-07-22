@@ -24,12 +24,12 @@ const Input = styled.input`
   border-radius: 3px;
   line-height: 1.21428571em;
   position: relative;
+  font-size: px;
   right: px;
 
   &::placeholder {
     color: rgba(39, 32, 101, 0.5);
-    font-weight: lighter;
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
   }
   &:focus {
@@ -44,11 +44,15 @@ const CustomForm = () => {
   const onChangeHandler = (e) => {
     setQuery(e.target.value);
   };
+  useEffect(() => {
+    getSearchMovies(query);
+  }, []);
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setQuery("");
     getSearchMovies(query);
   };
+
   return (
     <div>
       <Form onSubmit={onSubmitHandler}>
@@ -57,10 +61,13 @@ const CustomForm = () => {
             type="text"
             placeholder="Search for a movie"
             onChange={onChangeHandler}
+            value={query}
           />
         </div>
         <div>
-          <Button className="button">Search</Button>
+          <Button type="reset" className="button">
+            Search
+          </Button>
         </div>
       </Form>
     </div>

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import CustomForm from "../Form/Form";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1500px;
@@ -13,7 +14,6 @@ const Wrapper = styled.div`
 const Title = styled.div`
   margin-left: 2rem;
 `;
-const Search = styled.div``;
 
 const NavBar = () => {
   return (
@@ -22,6 +22,7 @@ const NavBar = () => {
         <Title>
           <h1>Movies Finder</h1>
         </Title>
+        <Link to="/">Home</Link>
         <CustomForm />
       </Wrapper>
     </div>

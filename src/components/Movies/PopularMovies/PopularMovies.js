@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import MovieContext from "../../context/movie/movieContext";
+import MovieContext from "../../../context/movie/movieContext";
 import PopularMoviesItem from "./PopularMoviesItem";
 import styled from "styled-components";
+import Loader from "../../UI/Loader";
 
 const Wrapper = styled.div`
   display: grid;
@@ -23,14 +24,14 @@ const PopularMovies = () => {
     <div>
       <Header>Popular Movies</Header>
       <Wrapper>
-        {loading
-          ? "loading"
-          : popularMovies &&
-            popularMovies
-              .slice(0, 8)
-              .map((movie) => (
-                <PopularMoviesItem movie={movie} key={movie.id} />
-              ))}
+        {loading ? (
+          <Loader />
+        ) : (
+          popularMovies &&
+          popularMovies
+            .slice(0, 8)
+            .map((movie) => <PopularMoviesItem movie={movie} key={movie.id} />)
+        )}
       </Wrapper>
     </div>
   );

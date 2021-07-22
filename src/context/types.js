@@ -1,3 +1,6 @@
 export const GET_TRENDING_MOVIES = "GET_TRENDING_MOVIES";
 export const GET_POPULAR_MOVIES = "GET_POPULAR_MOVIES";
 export const SEARCH_MOVIES = "SEARCH_MOVIES";
+export const SET_LOADING = "SET_LOADING";
+export const GET_DETAILS = "GET_DETAILS";
+export const GET_VIDEOS = "GET_VIDEOS";
